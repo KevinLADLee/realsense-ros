@@ -22,6 +22,8 @@ find_package(catkin REQUIRED COMPONENTS
     ddynamic_reconfigure
     diagnostic_updater
     )
+    
+find_package(OpenCV 4 REQUIRED)
 
 if(BUILD_WITH_OPENMP)
     find_package(OpenMP)
@@ -88,6 +90,7 @@ include_directories(
     include
     ${realsense2_INCLUDE_DIR}
     ${catkin_INCLUDE_DIRS}
+    ${OpenCV_INCLUDE_DIRS}
     )
 
 # RealSense ROS Node
@@ -121,6 +124,7 @@ target_link_libraries(${PROJECT_NAME}
     ${realsense2_LIBRARY}
     ${catkin_LIBRARIES}
     ${CMAKE_THREAD_LIBS_INIT}
+    ${OpenCV_LIBS}
     )
 
 if(WIN32)
